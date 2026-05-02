@@ -8,21 +8,9 @@ pipeline {
 
     stages {
 
-        stage('Clone') {
-            steps {
-                echo 'Using source from GitHub'
-            }
-        }
-
         stage('Build Image') {
             steps {
-                sh 'docker build -t $IMAGE_NAME .'
-            }
-        }
-
-        stage('Tag Image') {
-            steps {
-                sh 'docker tag $IMAGE_NAME $DOCKER_HUB/$IMAGE_NAME:latest'
+                sh 'docker build -t $DOCKER_HUB/$IMAGE_NAME:latest .'
             }
         }
 
